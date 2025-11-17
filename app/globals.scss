@@ -1,0 +1,37 @@
+:root {
+  --background: #fffefe;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666;
+  --accent: #6B46C1;
+  --accent-hover: #5a38a3;
+  --card-bg: #ffffff;
+  --navbar-bg: rgba(255, 255, 255, 0.8);
+  --navbar-scrolled: rgba(255, 255, 255, 0.95);
+  --shadow: rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.05);
+  --section-bg: #fafafa;
+  --progress-bg: #e5e5e5;
+  --footer-bg: #1a1a1a;
+  --footer-text: #999;
+}
+
+[data-theme="dark"] {
+  --background: #2F3136;
+  --text-primary: #DCDDDE;
+  --text-secondary: #B9BBBE;
+  --accent: #7289DA;
+  --accent-hover: #5B6EAE;
+  --card-bg: #36393F;
+  --navbar-bg: rgba(47, 49, 54, 0.9);
+  --navbar-scrolled: rgba(47, 49, 54, 0.95);
+  --shadow: rgba(0, 0, 0, 0.2);
+  --border: rgba(255, 255, 255, 0.1);
+  --section-bg: #2F3136;
+  --progress-bg: #4F545C;
+  --footer-bg: #23272A;
+  --footer-text: #B9BBBE;
+}
+
+a{
+  text-decoration: none;
+}
