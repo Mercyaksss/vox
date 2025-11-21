@@ -29,14 +29,14 @@
   flex-wrap: wrap;
 }
 
-.campaign-image {
+.campaign-details-image {
   flex: 1;
   min-width: 300px;
   border-radius: 16px;
   overflow: hidden;
 }
 
-.campaign-image img {
+.campaign-details-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -150,7 +150,7 @@
   transform: translateY(-1px);
 }
 
-.campaign-content {
+.campaign-details-content {
   background: var(--card-bg);
   border-radius: 16px;
   padding: 32px;

@@ -1,37 +1,52 @@
+/* globals.scss – add/replace with these for maximum futuristic vibe */
+
 :root {
-  --background: #fffefe;
-  --text-primary: #1a1a1a;
-  --text-secondary: #666;
-  --accent: #6B46C1;
-  --accent-hover: #5a38a3;
-  --card-bg: #ffffff;
-  --navbar-bg: rgba(255, 255, 255, 0.8);
-  --navbar-scrolled: rgba(255, 255, 255, 0.95);
-  --shadow: rgba(0, 0, 0, 0.08);
-  --border: rgba(0, 0, 0, 0.05);
-  --section-bg: #fafafa;
-  --progress-bg: #e5e5e5;
-  --footer-bg: #1a1a1a;
-  --footer-text: #999;
+  /* Light mode */
+  --background: #f8f9ff;
+  --section-bg: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --navbar-bg: rgba(255, 255, 255, 0.4);
+  --navbar-scrolled: rgba(255, 255, 255, 0.85);
+  --footer-bg: #0f0f1a;
+  --text-primary: #0f0f1a;
+  --text-secondary: #55557a;
+  --footer-text: #a0a0cc;
+  --border: rgba(120, 120, 180, 0.15);
+  --shadow: rgba(0, 0, 0, 0.06);
+  --progress-bg: rgba(120, 120, 180, 0.15);
+  --accent: #7c3aed;
+  --accent-hover: #6d28d9;
 }
 
 [data-theme="dark"] {
-  --background: #2F3136;
-  --text-primary: #DCDDDE;
-  --text-secondary: #B9BBBE;
-  --accent: #7289DA;
-  --accent-hover: #5B6EAE;
-  --card-bg: #36393F;
-  --navbar-bg: rgba(47, 49, 54, 0.9);
-  --navbar-scrolled: rgba(47, 49, 54, 0.95);
-  --shadow: rgba(0, 0, 0, 0.2);
-  --border: rgba(255, 255, 255, 0.1);
-  --section-bg: #2F3136;
-  --progress-bg: #4F545C;
-  --footer-bg: #23272A;
-  --footer-text: #B9BBBE;
+  --background: #0b0b14;
+  --section-bg: #11111a;
+  --card-bg: rgba(17, 17, 26, 0.65);
+  --navbar-bg: rgba(11, 11, 20, 0.6);
+  --navbar-scrolled: rgba(11, 11, 20, 0.9);
+  --footer-bg: #050508;
+  --text-primary: #e0e0ff;
+  --text-secondary: #a0a0cc;
+  --footer-text: #7878a3;
+  --border: rgba(120, 120, 180, 0.25);
+  --shadow: rgba(0, 0, 0, 0.4);
+  --progress-bg: rgba(120, 120, 180, 0.2);
+  --accent: #a78bfa;
+  --accent-hover: #c4b5fd;
+}
+
+/* Extra futuristic glows */
+::selection {
+  background: var(--accent);
+  color: white;
 }
 
 a{
   text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

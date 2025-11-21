@@ -173,6 +173,109 @@
   transform: translateY(-1px);
 }
 
+/* ───── MY NFTS – PREMIUM GALLERY UPGRADE (paste at bottom) ───── */
+
+.my-nfts-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+}
+
+.orb-1 { width: 700px; height: 700px; background: linear-gradient(135deg, var(--accent), #8B5CF6); top: -200px; right: -200px; }
+.orb-2 { width: 600px; height: 600px; background: linear-gradient(135deg, #06B6D4, #10B981); bottom: -150px; left: -150px; }
+.orb-3 { width: 500px; height: 500px; background: linear-gradient(135deg, #EC4899, #F59E0B); top: 40%; left: 50%; transform: translate(-50%, -50%); }
+
+.my-nfts { position: relative; z-index: 1; }
+
+.nft-card {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border) !important;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.nft-image {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.nft-image img {
+  transition: transform 0.6s ease;
+}
+
+.nft-card:hover .nft-image img {
+  transform: scale(1.1);
+}
+
+.nft-rarity-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: #fbbf24;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nft-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.nft-title {
+  background: linear-gradient(135deg, var(--accent), #8B5CF6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.search-bar {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border) !important;
+  transition: all 0.3s;
+}
+
+.search-bar:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+}
+
+.btn-browse {
+  background: linear-gradient(135deg, var(--accent), #8B5CF6) !important;
+  padding: 14px 32px !important;
+  border-radius: 12px !important;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
 @media (max-width: 768px) {
   .section-title {
     font-size: 36px;

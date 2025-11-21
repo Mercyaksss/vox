@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { Users, Clock, ChevronDown, ChevronUp } from 'lucide-react';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../Components/Navbar/Navbar';
 import './page.scss';
 
 export default function CampaignDetailsPage() {
@@ -227,7 +227,7 @@ export default function CampaignDetailsPage() {
       <section className="campaign-details">
         <div className="container">
           <div className="campaign-header">
-            <div className="campaign-image">
+            <div className="campaign-details-image">
               <img src={campaign.image} alt={campaign.title} />
             </div>
             <div className="campaign-info">
@@ -276,7 +276,7 @@ export default function CampaignDetailsPage() {
             </div>
           </div>
 
-          <div className="campaign-content">
+          <div className="campaign-details-content">
             <div className="campaign-description">
               <h3>Description</h3>
               <p>{campaign.description}</p>

@@ -1,5 +1,8 @@
+// app/Campaigns/Create/page.js
 'use client'
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Plus, Trash2, Zap, Image, Target, Clock, FileText } from 'lucide-react';
 import Navbar from '../../Components/Navbar/Navbar';
 import './page.scss';
 
@@ -16,19 +19,18 @@ export default function CreateCampaignPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: '' }));
+    setFormData(prev => ({ ...prev, [name]: value }));
+    setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
   const handleMilestoneChange = (index, field, value) => {
     const newMilestones = [...formData.milestones];
     newMilestones[index][field] = value;
-    setFormData((prev) => ({ ...prev, milestones: newMilestones }));
-    setErrors((prev) => ({ ...prev, [`milestone${index}${field}`]: '' }));
+    setFormData(prev => ({ ...prev, milestones: newMilestones }));
   };
 
   const addMilestone = () => {
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       milestones: [...prev.milestones, { description: '', fundingAmount: '', durationInDays: '' }],
     }));
@@ -36,7 +38,7 @@ export default function CreateCampaignPage() {
 
   const removeMilestone = (index) => {
     if (formData.milestones.length > 1) {
-      setFormData((prev) => ({
+      setFormData(prev => ({
         ...prev,
         milestones: prev.milestones.filter((_, i) => i !== index),
       }));
@@ -48,211 +50,182 @@ export default function CreateCampaignPage() {
     if (!formData.title.trim()) newErrors.title = 'Title is required';
     if (!formData.description.trim()) newErrors.description = 'Description is required';
     if (!formData.imageURI.trim()) newErrors.imageURI = 'Image URI is required';
-    if (!formData.goalAmount || parseFloat(formData.goalAmount) <= 0) {
-      newErrors.goalAmount = 'Funding goal must be greater than 0';
-    }
-    if (!formData.durationInDays || parseInt(formData.durationInDays) <= 0) {
-      newErrors.durationInDays = 'Duration must be greater than 0';
-    }
-    formData.milestones.forEach((milestone, index) => {
-      if (!milestone.description.trim()) {
-        newErrors[`milestone${index}description`] = `Milestone ${index + 1} description is required`;
-      }
-      if (!milestone.fundingAmount || parseFloat(milestone.fundingAmount) <= 0) {
-        newErrors[`milestone${index}fundingAmount`] = `Milestone ${index + 1} funding amount must be greater than 0`;
-      }
-      if (!milestone.durationInDays || parseInt(milestone.durationInDays) <= 0) {
-        newErrors[`milestone${index}durationInDays`] = `Milestone ${index + 1} duration must be greater than 0`;
-      }
+    if (!formData.goalAmount || parseFloat(formData.goalAmount) <= 0) newErrors.goalAmount = 'Goal must be > 0 ETH';
+    if (!formData.durationInDays || parseInt(formData.durationInDays) <= 0) newErrors.durationInDays = 'Duration must be > 0 days';
+
+    formData.milestones.forEach((m, i) => {
+      if (!m.description.trim()) newErrors[`m${i}desc`] = 'Description required';
+      if (!m.fundingAmount || parseFloat(m.fundingAmount) <= 0) newErrors[`m${i}fund`] = 'Amount must be > 0 ETH';
+      if (!m.durationInDays || parseInt(m.durationInDays) <= 0) newErrors[`m${i}days`] = 'Days must be > 0';
     });
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
-
-    const milestoneDescriptions = formData.milestones.map((m) => m.description);
-    const milestoneFundingAmounts = formData.milestones.map((m) => (parseFloat(m.fundingAmount) * 1e18).toString()); // Convert ETH to wei
-    const milestoneDurations = formData.milestones.map((m) => parseInt(m.durationInDays));
-
-    console.log('Submitting campaign:', {
-      title: formData.title,
-      description: formData.description,
-      imageURI: formData.imageURI,
-      goalAmount: (parseFloat(formData.goalAmount) * 1e18).toString(), // Convert ETH to wei
-      durationInDays: parseInt(formData.durationInDays),
-      milestoneDescriptions,
-      milestoneFundingAmounts,
-      milestoneDurations,
-    });
-
-    // TODO: Integrate with smart contract using Web3.js or ethers.js
-    // Example (uncomment and configure with your contract):
-    /*
-    try {
-      const web3 = new Web3(window.ethereum);
-      const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
-      await contract.methods
-        .createCampaign(
-          formData.title,
-          formData.description,
-          formData.imageURI,
-          web3.utils.toWei(formData.goalAmount, 'ether'),
-          formData.durationInDays,
-          milestoneDescriptions,
-          milestoneFundingAmounts,
-          milestoneDurations
-        )
-        .send({ from: walletAddress });
-      alert('Campaign created successfully!');
-    } catch (error) {
-      console.error('Error creating campaign:', error);
-      alert('Failed to create campaign');
+    if (validateForm()) {
+      console.log('Campaign ready to deploy:', formData);
+      // Add your contract call here
     }
-    */
   };
 
   return (
     <div className="create-campaign-page">
       <Navbar />
+
+      {/* Floating Orbs – same as every other page */}
+      <div className="hero-bg">
+        {[1, 2, 3].map(i => (
+          <motion.div
+            key={i}
+            className={`gradient-orb orb-${i}`}
+            animate={{ x: [0, 120, -120, 0], y: [0, -120, 120, 0] }}
+            transition={{ duration: 35 + i * 7, repeat: Infinity, ease: "linear" }}
+          />
+        ))}
+      </div>
+
       <section className="create-campaign">
         <div className="content-container">
-          <div className="section-header">
-            <h2 className="section-title">Create a New Campaign</h2>
-            <p className="section-subtitle">Launch your Web3 project with transparent, milestone-based funding</p>
-          </div>
-          <div className="form-card">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="section-title">
+              Launch Your Vision
+              <motion.span
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+                style={{ display: 'inline-block', marginLeft: 12 }}
+              >_</motion.span>
+            </h2>
+            <p className="section-subtitle">Transparent, milestone-based crowdfunding for the future</p>
+          </motion.div>
+
+          <motion.div
+            className="form-card"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.9 }}
+          >
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="title">Campaign Title</label>
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  placeholder="Enter campaign title"
-                />
-                {errors.title && <span className="error">{errors.title}</span>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
+              {/* Main Fields */}
+              {[
+                { icon: <FileText />, label: "Campaign Title", name: "title", placeholder: "e.g. Decentralized Social Network" },
+                { icon: <Image />, label: "Image URI (IPFS recommended)", name: "imageURI", placeholder: "ipfs://..." },
+                { icon: <Target />, label: "Funding Goal (ETH)", name: "goalAmount", type: "number", step: "0.01" },
+                { icon: <Clock />, label: "Campaign Duration (Days)", name: "durationInDays", type: "number" },
+              ].map((field, i) => (
+                <motion.div
+                  key={field.name}
+                  className="form-group"
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                >
+                  <label>{field.icon} {field.label}</label>
+                  <input
+                    type={field.type || "text"}
+                    name={field.name}
+                    value={formData[field.name]}
+                    onChange={handleInputChange}
+                    placeholder={field.placeholder}
+                    step={field.step}
+                  />
+                  {errors[field.name] && <motion.span className="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>{errors[field.name]}</motion.span>}
+                </motion.div>
+              ))}
+
+              <motion.div className="form-group" initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }}>
+                <label>Description</label>
                 <textarea
-                  id="description"
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
-                  placeholder="Describe your campaign"
-                  rows="4"
+                  placeholder="Tell the world why your project matters..."
+                  rows={5}
                 />
-                {errors.description && <span className="error">{errors.description}</span>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="imageURI">Image URI</label>
-                <input
-                  type="text"
-                  id="imageURI"
-                  name="imageURI"
-                  value={formData.imageURI}
-                  onChange={handleInputChange}
-                  placeholder="Enter image URI (e.g., IPFS link)"
-                />
-                {errors.imageURI && <span className="error">{errors.imageURI}</span>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="goalAmount">Funding Goal (ETH)</label>
-                <input
-                  type="number"
-                  id="goalAmount"
-                  name="goalAmount"
-                  value={formData.goalAmount}
-                  onChange={handleInputChange}
-                  placeholder="Enter funding goal in ETH"
-                  step="0.01"
-                />
-                {errors.goalAmount && <span className="error">{errors.goalAmount}</span>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="durationInDays">Duration (Days)</label>
-                <input
-                  type="number"
-                  id="durationInDays"
-                  name="durationInDays"
-                  value={formData.durationInDays}
-                  onChange={handleInputChange}
-                  placeholder="Enter campaign duration in days"
-                  step="1"
-                />
-                {errors.durationInDays && <span className="error">{errors.durationInDays}</span>}
-              </div>
+                {errors.description && <motion.span className="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>{errors.description}</motion.span>}
+              </motion.div>
+
+              {/* Milestones */}
               <div className="milestones-section">
-                <h3>Milestones</h3>
+                <motion.h3 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>
+                  Milestones ({formData.milestones.length})
+                </motion.h3>
+
                 {formData.milestones.map((milestone, index) => (
-                  <div key={index} className="milestone-group">
-                    <h4>Milestone {index + 1}</h4>
-                    <div className="form-group">
-                      <label htmlFor={`milestone-description-${index}`}>Description</label>
-                      <input
-                        type="text"
-                        id={`milestone-description-${index}`}
-                        value={milestone.description}
-                        onChange={(e) => handleMilestoneChange(index, 'description', e.target.value)}
-                        placeholder={`Milestone ${index + 1} description`}
-                      />
-                      {errors[`milestone${index}description`] && (
-                        <span className="error">{errors[`milestone${index}description`]}</span>
+                  <motion.div
+                    key={index}
+                    className="milestone-group"
+                    layout
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -30 }}
+                    transition={{ duration: 0.4 }}
+                    whileHover={{ y: -4 }}
+                  >
+                    <div className="milestone-header">
+                      <h4>Milestone {index + 1}</h4>
+                      {formData.milestones.length > 1 && (
+                        <motion.button
+                          type="button"
+                          className="btn-remove-milestone"
+                          onClick={() => removeMilestone(index)}
+                          whileHover={{ scale: 1.1, rotate: 90 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Trash2 size={18} />
+                        </motion.button>
                       )}
                     </div>
-                    <div className="form-group">
-                      <label htmlFor={`milestone-funding-${index}`}>Funding Amount (ETH)</label>
-                      <input
-                        type="number"
-                        id={`milestone-funding-${index}`}
-                        value={milestone.fundingAmount}
-                        onChange={(e) => handleMilestoneChange(index, 'fundingAmount', e.target.value)}
-                        placeholder="Funding amount in ETH"
-                        step="0.01"
-                      />
-                      {errors[`milestone${index}fundingAmount`] && (
-                        <span className="error">{errors[`milestone${index}fundingAmount`]}</span>
-                      )}
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor={`milestone-duration-${index}`}>Duration (Days)</label>
-                      <input
-                        type="number"
-                        id={`milestone-duration-${index}`}
-                        value={milestone.durationInDays}
-                        onChange={(e) => handleMilestoneChange(index, 'durationInDays', e.target.value)}
-                        placeholder="Duration in days"
-                        step="1"
-                      />
-                      {errors[`milestone${index}durationInDays`] && (
-                        <span className="error">{errors[`milestone${index}durationInDays`]}</span>
-                      )}
-                    </div>
-                    {formData.milestones.length > 1 && (
-                      <button
-                        type="button"
-                        className="btn-remove-milestone"
-                        onClick={() => removeMilestone(index)}
-                      >
-                        Remove Milestone
-                      </button>
-                    )}
-                  </div>
+
+                    {[
+                      { name: 'description', placeholder: 'What will you deliver?' },
+                      { name: 'fundingAmount', type: 'number', step: '0.01', placeholder: 'ETH required' },
+                      { name: 'durationInDays', type: 'number', placeholder: 'Days to complete' },
+                    ].map((f, i) => (
+                      <motion.div key={i} className="form-group" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.05 }}>
+                        <input
+                          type={f.type || "text"}
+                          value={milestone[f.name]}
+                          onChange={(e) => handleMilestoneChange(index, f.name, e.target.value)}
+                          placeholder={f.placeholder}
+                          step={f.step}
+                        />
+                        {errors[`m${index}${f.name === 'description' ? 'desc' : f.name === 'fundingAmount' ? 'fund' : 'days'}`] && (
+                          <span className="error">{errors[`m${index}${f.name === 'description' ? 'desc' : f.name === 'fundingAmount' ? 'fund' : 'days'}`]}</span>
+                        )}
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 ))}
-                <button type="button" className="btn-add-milestone" onClick={addMilestone}>
-                  Add Milestone
-                </button>
+
+                <motion.button
+                  type="button"
+                  className="btn-add-milestone"
+                  onClick={addMilestone}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Plus size={20} /> Add Milestone
+                </motion.button>
               </div>
-              <button type="submit" className="btn-submit">
-                Create Campaign
-              </button>
+
+              <motion.button
+                type="submit"
+                className="btn-submit"
+                whileHover={{ scale: 1.04, boxShadow: "0 20px 40px rgba(124, 58, 237, 0.4)" }}
+                whileTap={{ scale: 0.96 }}
+              >
+                <Zap size={20} /> Launch Campaign
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
