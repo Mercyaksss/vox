@@ -50,3 +50,21 @@ a{
   padding: 0;
   box-sizing: border-box;
 }
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+}
+
+.orb-1 { width: 700px; height: 700px; background: linear-gradient(135deg, var(--accent), #8B5CF6); top: -200px; right: -200px; }
+.orb-2 { width: 600px; height: 600px; background: linear-gradient(135deg, #06B6D4, #10B981); bottom: -150px; left: -150px; }
+.orb-3 { width: 500px; height: 500px; background: linear-gradient(135deg, #EC4899, #F59E0B); top: 40%; left: 50%; transform: translate(-50%, -50%); }
