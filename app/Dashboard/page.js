@@ -265,7 +265,7 @@ export default function DashboardPage() {
                   ))
                 ) : (
                   <motion.div className="no-results" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                    <p>You haven&apos;t created any campaigns yet.</p>
+                    <p>You haven't created any campaigns yet.</p>
                     <Link href="/Campaigns/Create">
                       <motion.button className="btn-create" whileHover={{ scale: 1.05 }}>
                         <Zap size={18} /> Create Campaign
@@ -278,7 +278,7 @@ export default function DashboardPage() {
 
             <motion.div className="section" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
               <div className="section-subheader">
-                <h3>Campaigns You&apos;ve Backed</h3>
+                <h3>Campaigns You've Backed</h3>
                 <Link href="/Campaigns" className="view-all">Browse More <ArrowRight size={16} /></Link>
               </div>
               <div className="campaigns-grid">
@@ -318,7 +318,7 @@ export default function DashboardPage() {
                   ))
                 ) : (
                   <motion.div className="no-results" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                    <p>You haven&apos;t backed any campaigns yet.</p>
+                    <p>You haven't backed any campaigns yet.</p>
                     <Link href="/Campaigns">
                       <motion.button className="btn-create" whileHover={{ scale: 1.05 }}>
                         Explore Campaigns
