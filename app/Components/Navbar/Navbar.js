@@ -1,15 +1,28 @@
+// app/Components/Navbar/Navbar.js
 'use client'
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Sun, Moon, User } from 'lucide-react';
+import { useAccount } from 'wagmi';
 import './Navbar.scss';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState('light');
-  const [walletAddress, setWalletAddress] = useState('0x742d...9f2a'); // Mock wallet address
+  const [mounted, setMounted] = useState(false); // Add mounted state
   const pathname = usePathname();
+  const { address, isConnected } = useAccount();
+
+  // Shortened address (e.g., 0x742d...9f2a)
+  const shortenedAddress = address 
+    ? `${address.slice(0, 6)}...${address.slice(-4)}` 
+    : 'Connect Wallet';
+
+  // Set mounted to true after client-side hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     // Initialize theme from localStorage or default to 'light'
@@ -65,7 +78,8 @@ export default function Navbar() {
               </button>
               <div className="wallet-indicator">
                 <User size={20} />
-                <span>{walletAddress}</span>
+                {/* Only render address after client-side mount */}
+                <span>{mounted ? shortenedAddress : 'Connect Wallet'}</span>
               </div>
               {/* <button className="btn-connect">Connect Wallet</button> */}
             </div>

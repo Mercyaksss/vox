@@ -12,6 +12,7 @@
   box-sizing: border-box;
 }
 
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -177,4 +178,22 @@
   .attributes-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* Fix image height on NFT details page */
+.nft-image {
+  aspect-ratio: 1 / 1;           /* ← makes it perfectly square */
+  height: 250px;                 /* ← tall and proud like in your screenshot */
+  max-height: 80vh;
+}
+
+@media (max-width: 768px) {
+  .nft-image {
+    height: 350px;
+  }
+}
+
+.nft-detail-image {
+  object-fit: cover !important;
 }

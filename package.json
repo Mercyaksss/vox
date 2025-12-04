@@ -9,16 +9,27 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@rainbow-me/rainbowkit": "^2.1.0",
+    "@tanstack/react-query": "^5.90.11",
+    "@wagmi/connectors": "^7.0.2",
+    "@wagmi/core": "^3.0.0",
+    "ethers": "^6.15.0",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.545.0",
     "next": "15.5.4",
+    "nft.storage": "^7.2.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "sass": "^1.93.2"
+    "react-dropzone": "^14.3.8",
+    "sass": "^1.93.2",
+    "viem": "^2.21.1",
+    "wagmi": "^2.12.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/react": "19.2.7",
     "eslint": "^9",
-    "eslint-config-next": "15.5.4"
+    "eslint-config-next": "15.5.4",
+    "typescript": "5.9.3"
   }
 }

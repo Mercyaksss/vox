@@ -1,38 +1,37 @@
+// app/Dashboard/MyNfts/[id]/page.js
 'use client'
 import React, { useState } from 'react';
-import Link from 'next/link'; // Fallback to next/link
-import { useParams } from 'next/navigation'; // Keep useParams from next/navigation
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import Navbar from '../../../Components/Navbar/Navbar';
+import Image from 'next/image';
 import './page.scss';
 
 export default function NFTDetailsPage() {
   const { id } = useParams();
-  const [userAddress] = useState('0x742d...9f2a'); // Mock wallet address
+  const [userAddress] = useState('0x742d...9f2a');
 
-  // Mock NFT data
+  const REAL_BRONZE_IMAGE = "https://gateway.pinata.cloud/ipfs/bafkreibmn3i2a7qjecia25ns5uddh6hpym4jo4m6hxmzslc3nnibjhocai";
+  const isBronzeMinted = id === '1';
+
   const nft = {
     id: parseInt(id),
-    name: 'Supporter Badge #001',
+    name: isBronzeMinted ? 'Bronze Supporter Badge' : 'Supporter Badge #001',
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd66f30?w=800',
     campaign: 'DeFi Trading Platform',
     campaignId: 1,
-    tokenId: 1001,
+    tokenId: isBronzeMinted ? 1001 : 1001,
     owner: '0x742d...9f2a',
     mintDate: '2025-09-15',
     attributes: [
-      { trait_type: 'Rarity', value: 'Rare' },
-      { trait_type: 'Tier', value: 'Gold' },
-      { trait_type: 'Edition', value: '1/100' },
+      { trait_type: 'Rarity', value: isBronzeMinted ? 'Common' : 'Rare' },
+      { trait_type: 'Tier', value: isBronzeMinted ? 'Bronze' : 'Gold' },
+      { trait_type: 'Edition', value: 'Soulbound' },
     ],
   };
 
   const isOwner = userAddress.toLowerCase() === nft.owner.toLowerCase();
-
-  // Debug: Check if Link is defined (removed console.error to avoid clutter)
-  if (typeof Link === 'undefined') {
-    throw new Error('Link component is still undefined after fallback import');
-  }
 
   return (
     <div className="nft-details-page">
@@ -41,7 +40,19 @@ export default function NFTDetailsPage() {
         <div className="container">
           <div className="nft-header">
             <div className="nft-image">
-              <img src={nft.image} alt={nft.name} />
+              <Image 
+                src={isBronzeMinted ? REAL_BRONZE_IMAGE : nft.image}
+                alt={nft.name}
+                width={600}
+                height={600}
+                style={{ 
+                  width: '100%',
+                  height: '100%',           // ← forces full height
+                  objectFit: 'cover',
+                  borderRadius: '16px'
+                }}
+                className="nft-detail-image"  // ← new class for extra control
+              />
             </div>
             <div className="nft-info">
               <h2 className="nft-title">{nft.name}</h2>
@@ -51,7 +62,7 @@ export default function NFTDetailsPage() {
               <div className="nft-stats">
                 <div className="stat-item">
                   <span className="stat-label">Token ID</span>
-                  <span className="stat-value">{nft.tokenId}</span>
+                  <span className="stat-value">#{nft.tokenId}</span>
                 </div>
                 <div className="stat-item">
                   <span className="stat-label">Owner</span>

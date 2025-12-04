@@ -6,6 +6,19 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color: var(--text-primary);
   background: var(--background);
+  min-height: 100vh;           /* ← THIS FIXES IT */
+  position: relative;          /* ← needed for the pseudo-element */
+  overflow-x: hidden;
+
+  /* Full-screen gradient background that never ends */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    // background: linear-gradient(135deg, #0f0f0 0%, #1a0033 50%, #000000 100%);
+    z-index: -2;
+
+  }
 
   // * {
   //   margin: 0;

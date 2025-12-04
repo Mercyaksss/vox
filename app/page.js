@@ -1,13 +1,26 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image'; // ← Added import
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Vote, Shield, Award, TrendingUp, Users, CheckCircle, Github, Twitter, Send, Sun, Moon } from 'lucide-react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
+import { useRouter } from 'next/navigation';
 import './page.scss';
 
 export default function VoxLandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState('light');
+  const { isConnected } = useAccount();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isConnected) {
+      router.push('/Dashboard');
+    }
+  }, [isConnected, router]);
+
   const [stats] = useState({
     totalRaised: '2.5M',
     campaigns: '342',
@@ -49,15 +62,12 @@ export default function VoxLandingPage() {
   const howItWorks = [
     { step: '01', title: 'Creator Launches Campaign', description: 'Set goals, define milestones, and share your vision with the community.' },
     { step: '02', title: 'Backers Contribute', description: 'Support projects you believe in. Choose public or private contributions.' },
-    { step: '03', title: 'Evidence & Voting', description: 'Creators submit proof of work. Backers vote to approve milestone completion.' },
+    { step: '03', title: 'Evidence & Voting', description: 'Creators submit proof of work. Backers vote to approve to approve milestone completion.' },
     { step: '04', title: 'Funds Released', description: 'Approved milestones automatically release funds. Collect NFT badges as rewards.' }
   ];
 
   return (
     <div className="vox-landing" data-theme={theme}>
-      {/* Everything else is exactly the same as the animated version I sent earlier */}
-      {/* Nav, Hero, Features, Campaigns, How It Works, CTA, Footer – all unchanged except the arrays above are now real */}
-
       {/* Navigation */}
       <motion.nav className={`navbar ${scrolled ? 'scrolled' : ''}`} initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
         <div className="container">
@@ -80,13 +90,73 @@ export default function VoxLandingPage() {
                   </motion.div>
                 </AnimatePresence>
               </motion.button>
-              <motion.button className="btn-connect" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                Connect Wallet
-              </motion.button>
+              <ConnectButton.Custom>
+                {({
+                  account,
+                  chain,
+                  openAccountModal,
+                  openChainModal,
+                  openConnectModal,
+                  authenticationStatus,
+                  mounted,
+                }) => {
+                  const ready = mounted && authenticationStatus !== 'loading';
+                  const connected = ready && account && chain;
+
+                  return (
+                    <div
+                      {...(!ready && {
+                        'aria-hidden': true,
+                        style: { opacity: 0, pointerEvents: 'none', userSelect: 'none' },
+                      })}
+                    >
+                      {(() => {
+                        if (!connected) {
+                          return (
+                            <motion.button 
+                              className="btn-connect" 
+                              onClick={openConnectModal}
+                              whileHover={{ scale: 1.05 }} 
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              Connect Wallet
+                            </motion.button>
+                          );
+                        }
+
+                        if (chain.unsupported) {
+                          return (
+                            <motion.button 
+                              className="btn-connect" 
+                              onClick={openChainModal}
+                              whileHover={{ scale: 1.05 }} 
+                              whileTap={{ scale: 0.95 }}
+                              style={{ background: '#ef4444' }}
+                            >
+                              Wrong Network
+                            </motion.button>
+                          );
+                        }
+
+                        return (
+                          <motion.button 
+                            className="btn-connect" 
+                            onClick={openAccountModal}
+                            whileHover={{ scale: 1.05 }} 
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            {account.displayName}
+                          </motion.button>
+                        );
+                      })()}
+                    </div>
+                  );
+                }}
+              </ConnectButton.Custom>
             </div>
           </div>
         </div>
-      </motion.nav>
+      </motion.nav> 
 
       {/* Hero – unchanged */}
       <section className="hero">
@@ -153,7 +223,13 @@ export default function VoxLandingPage() {
             {campaigns.map((campaign, i) => (
               <motion.div key={campaign.id} className="campaign-card" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} whileHover={{ y: -8 }}>
                 <div className="campaign-image">
-                  <img src={campaign.image} alt={campaign.title} />
+                  <Image 
+                    src={campaign.image} 
+                    alt={campaign.title} 
+                    width={800} 
+                    height={500} 
+                    className="object-cover"
+                  />
                   <div className="campaign-badge">{campaign.daysLeft} days left</div>
                 </div>
                 <div className="campaign-content">
@@ -226,7 +302,7 @@ export default function VoxLandingPage() {
               </div>
             </div>
 
-                        <div className="footer-links">
+            <div className="footer-links">
               <div className="footer-column">
                 <h4>Platform</h4>
                 <a href="#">Explore Campaigns</a>
