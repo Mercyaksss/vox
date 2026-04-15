@@ -4,7 +4,15 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color: var(--text-primary);
   background: var(--background);
+  overflow-x: hidden;           /* Prevents horizontal scroll */
+  width: 100%;
+  max-width: 100vw;
 
+  /* Also force body/html safety */
+  html, body {
+  overflow-x: hidden;
+  width: 100%;
+  }
 
   .container {
     max-width: 1200px;

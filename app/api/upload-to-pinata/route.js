@@ -1,5 +1,3 @@
-// app/api/upload-to-pinata/route.js
-// app/api/upload-to-pinata/route.js  ← add these 3 lines right at the top
 console.log('=== ENV DEBUG ===');
 console.log('PINATA_JWT exists:', !!process.env.PINATA_JWT);
 console.log('First 20 chars:', process.env.PINATA_JWT?.substring(0, 20));
