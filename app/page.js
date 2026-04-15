@@ -11,6 +11,7 @@ import './page.scss';
 
 export default function VoxLandingPage() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState('light');
   const { isConnected } = useAccount();
   const router = useRouter();
@@ -76,12 +77,15 @@ export default function VoxLandingPage() {
               <div className="logo-icon">V</div>
               <span className="logo-text">Vox</span>
             </div>
+
+            {/* Desktop Nav Links */}
             <div className="nav-links">
               <a href="#features">Features</a>
               <a href="#campaigns">Campaigns</a>
               <a href="#how-it-works">How It Works</a>
               <a href="#about">About</a>
             </div>
+
             <div className="nav-actions">
               <motion.button className="btn-theme-toggle" onClick={toggleTheme} whileTap={{ scale: 0.9 }}>
                 <AnimatePresence mode="wait">
@@ -90,6 +94,7 @@ export default function VoxLandingPage() {
                   </motion.div>
                 </AnimatePresence>
               </motion.button>
+
               <ConnectButton.Custom>
                 {({
                   account,
@@ -104,17 +109,12 @@ export default function VoxLandingPage() {
                   const connected = ready && account && chain;
 
                   return (
-                    <div
-                      {...(!ready && {
-                        'aria-hidden': true,
-                        style: { opacity: 0, pointerEvents: 'none', userSelect: 'none' },
-                      })}
-                    >
+                    <div {...(!ready && { 'aria-hidden': true, style: { opacity: 0, pointerEvents: 'none', userSelect: 'none' } })}>
                       {(() => {
                         if (!connected) {
                           return (
                             <motion.button 
-                              className="btn-connect" 
+                              className="btn-connect desktop-connect" 
                               onClick={openConnectModal}
                               whileHover={{ scale: 1.05 }} 
                               whileTap={{ scale: 0.95 }}
@@ -153,10 +153,55 @@ export default function VoxLandingPage() {
                   );
                 }}
               </ConnectButton.Custom>
+
+              {/* Hamburger Button - Mobile Only */}
+              <button className="hamburger" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
             </div>
           </div>
         </div>
-      </motion.nav> 
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              className="mobile-menu"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="mobile-menu-content">
+                <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
+                <a href="#campaigns" onClick={() => setIsMobileMenuOpen(false)}>Campaigns</a>
+                <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
+                <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+                
+                {/* Connect Wallet also appears in mobile menu for better UX */}
+                <div className="mobile-connect">
+                  <ConnectButton.Custom>
+                    {({ account, chain, openAccountModal, openChainModal, openConnectModal, authenticationStatus, mounted }) => {
+                      const ready = mounted && authenticationStatus !== 'loading';
+                      const connected = ready && account && chain;
+
+                      if (!connected) {
+                        return <button className="btn-connect" onClick={openConnectModal}>Connect Wallet</button>;
+                      }
+                      if (chain.unsupported) {
+                        return <button className="btn-connect" onClick={openChainModal} style={{ background: '#ef4444' }}>Wrong Network</button>;
+                      }
+                      return <button className="btn-connect" onClick={openAccountModal}>{account.displayName}</button>;
+                    }}
+                  </ConnectButton.Custom>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
 
       {/* Hero – unchanged */}
       <section className="hero">
