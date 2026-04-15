@@ -1,4 +1,4 @@
-@import '../../globals.scss';
+@use '../../globals.scss' as *;
 
 .campaign-details-page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;

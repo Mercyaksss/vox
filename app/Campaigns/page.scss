@@ -1,4 +1,5 @@
-@import '../globals.scss';
+@use '../globals.scss' as *;
+
 
 /* Wrap everything in .campaigns-page to scope all styles */
 .campaigns-page {

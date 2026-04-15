@@ -1,0 +1,283 @@
+18:08:25.573 Running build in Washington, D.C., USA (East) – iad1
+18:08:25.573 Build machine configuration: 2 cores, 8 GB
+18:08:25.687 Cloning github.com/Mercyaksss/vox (Branch: main, Commit: 1e00498)
+18:08:25.688 Previous build caches not available.
+18:08:25.890 Cloning completed: 203.000ms
+18:08:26.188 Running "vercel build"
+18:08:27.126 Vercel CLI 51.2.1
+18:08:27.532 Installing dependencies...
+18:08:29.035 npm warn ERESOLVE overriding peer dependency
+18:08:29.037 npm warn While resolving: react-remove-scroll@2.5.7
+18:08:29.037 npm warn Found: @types/react@19.2.7
+18:08:29.037 npm warn node_modules/@types/react
+18:08:29.038 npm warn   dev @types/react@"19.2.7" from the root project
+18:08:29.038 npm warn   9 more (zustand, zustand, react-remove-scroll-bar, ...)
+18:08:29.038 npm warn
+18:08:29.039 npm warn Could not resolve dependency:
+18:08:29.039 npm warn peerOptional @types/react@"^16.8.0 || ^17.0.0 || ^18.0.0" from react-remove-scroll@2.5.7
+18:08:29.039 npm warn node_modules/react-remove-scroll
+18:08:29.040 npm warn   react-remove-scroll@"2.5.7" from @rainbow-me/rainbowkit@2.1.0
+18:08:29.040 npm warn   node_modules/@rainbow-me/rainbowkit
+18:08:29.040 npm warn
+18:08:29.040 npm warn Conflicting peer dependency: @types/react@18.3.28
+18:08:29.042 npm warn node_modules/@types/react
+18:08:29.042 npm warn   peerOptional @types/react@"^16.8.0 || ^17.0.0 || ^18.0.0" from react-remove-scroll@2.5.7
+18:08:29.042 npm warn   node_modules/react-remove-scroll
+18:08:29.042 npm warn     react-remove-scroll@"2.5.7" from @rainbow-me/rainbowkit@2.1.0
+18:08:29.042 npm warn     node_modules/@rainbow-me/rainbowkit
+18:08:29.050 npm warn ERESOLVE overriding peer dependency
+18:08:29.050 npm warn While resolving: react-remove-scroll@2.5.7
+18:08:29.051 npm warn Found: react@19.1.0
+18:08:29.051 npm warn node_modules/react
+18:08:29.051 npm warn   react@"19.1.0" from the root project
+18:08:29.051 npm warn   20 more (zustand, zustand, @rainbow-me/rainbowkit, ...)
+18:08:29.051 npm warn
+18:08:29.052 npm warn Could not resolve dependency:
+18:08:29.052 npm warn peer react@"^16.8.0 || ^17.0.0 || ^18.0.0" from react-remove-scroll@2.5.7
+18:08:29.052 npm warn node_modules/react-remove-scroll
+18:08:29.052 npm warn   react-remove-scroll@"2.5.7" from @rainbow-me/rainbowkit@2.1.0
+18:08:29.052 npm warn   node_modules/@rainbow-me/rainbowkit
+18:08:29.052 npm warn
+18:08:29.052 npm warn Conflicting peer dependency: react@18.3.1
+18:08:29.053 npm warn node_modules/react
+18:08:29.054 npm warn   peer react@"^16.8.0 || ^17.0.0 || ^18.0.0" from react-remove-scroll@2.5.7
+18:08:29.054 npm warn   node_modules/react-remove-scroll
+18:08:29.054 npm warn     react-remove-scroll@"2.5.7" from @rainbow-me/rainbowkit@2.1.0
+18:08:29.054 npm warn     node_modules/@rainbow-me/rainbowkit
+18:08:29.070 npm warn ERESOLVE overriding peer dependency
+18:08:29.071 npm warn While resolving: use-sync-external-store@1.2.0
+18:08:29.072 npm warn Found: react@19.1.0
+18:08:29.072 npm warn node_modules/react
+18:08:29.072 npm warn   react@"19.1.0" from the root project
+18:08:29.072 npm warn   20 more (zustand, zustand, @rainbow-me/rainbowkit, ...)
+18:08:29.073 npm warn
+18:08:29.073 npm warn Could not resolve dependency:
+18:08:29.073 npm warn peer react@"^16.8.0 || ^17.0.0 || ^18.0.0" from use-sync-external-store@1.2.0
+18:08:29.073 npm warn node_modules/valtio/node_modules/use-sync-external-store
+18:08:29.074 npm warn   use-sync-external-store@"1.2.0" from valtio@1.13.2
+18:08:29.074 npm warn   node_modules/valtio
+18:08:29.074 npm warn
+18:08:29.075 npm warn Conflicting peer dependency: react@18.3.1
+18:08:29.075 npm warn node_modules/react
+18:08:29.075 npm warn   peer react@"^16.8.0 || ^17.0.0 || ^18.0.0" from use-sync-external-store@1.2.0
+18:08:29.076 npm warn   node_modules/valtio/node_modules/use-sync-external-store
+18:08:29.076 npm warn     use-sync-external-store@"1.2.0" from valtio@1.13.2
+18:08:29.076 npm warn     node_modules/valtio
+18:08:35.629 npm warn deprecated @paulmillr/qr@0.2.1: The package is now available as "qr": npm install qr
+18:08:35.919 npm warn deprecated @metamask/sdk-analytics@0.0.5: No longer maintained, superseded by @metamask/connect-analytics
+18:08:40.568 npm warn deprecated @walletconnect/sign-client@2.21.1: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:40.866 npm warn deprecated @walletconnect/universal-provider@2.21.1: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:40.948 npm warn deprecated @walletconnect/sign-client@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:40.989 npm warn deprecated @walletconnect/ethereum-provider@2.21.1: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:40.996 npm warn deprecated @walletconnect/sign-client@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:40.997 npm warn deprecated @walletconnect/sign-client@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:41.250 npm warn deprecated @walletconnect/universal-provider@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:41.267 npm warn deprecated @walletconnect/universal-provider@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:41.282 npm warn deprecated @walletconnect/universal-provider@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+18:08:42.110 npm warn deprecated @metamask/sdk-install-modal-web@0.32.1: No longer maintained, superseded by https://docs.metamask.io/metamask-connect
+18:08:51.181 npm warn deprecated @metamask/sdk-communication-layer@0.33.1: No longer maintained, superseded by https://docs.metamask.io/metamask-connect
+18:08:52.644 npm warn deprecated @metamask/sdk@0.33.1: No longer maintained, superseded by https://docs.metamask.io/metamask-connect
+18:08:59.985 
+18:08:59.993 added 827 packages in 32s
+18:08:59.994 
+18:08:59.994 206 packages are looking for funding
+18:08:59.994   run `npm fund` for details
+18:09:00.047 Detected Next.js version: 15.5.15
+18:09:00.062 Running "npm run build"
+18:09:00.164 
+18:09:00.164 > vox@0.1.0 build
+18:09:00.164 > next build --turbopack
+18:09:00.164 
+18:09:00.700 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+18:09:00.700 This information is used to shape Next.js' roadmap and prioritize features.
+18:09:00.700 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+18:09:00.700 https://nextjs.org/telemetry
+18:09:00.701 
+18:09:00.781    ▲ Next.js 15.5.15 (Turbopack)
+18:09:00.781 
+18:09:00.816    Creating an optimized production build ...
+18:09:38.896  ✓ Finished writing to disk in 89ms
+18:09:38.905 Turbopack build encountered 9 warnings:
+18:09:38.905 ./app/Campaigns/Create/page.scss
+18:09:38.905 Issue while running loader
+18:09:38.905 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Campaigns/Create/page.scss:0:8:
+18:09:38.906 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.906 
+18:09:38.906 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.906 
+18:09:38.906 0 | @import '../../globals.scss';
+18:09:38.906 
+18:09:38.906 
+18:09:38.906 app/Campaigns/Create/page.scss 1:9  root stylesheet
+18:09:38.906 
+18:09:38.906 
+18:09:38.907 
+18:09:38.907 ./app/Campaigns/[id]/page.scss
+18:09:38.907 Issue while running loader
+18:09:38.907 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Campaigns/%5Bid%5D/page.scss:0:8:
+18:09:38.907 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.907 
+18:09:38.907 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.907 
+18:09:38.908 0 | @import '../../globals.scss';
+18:09:38.908 
+18:09:38.908 
+18:09:38.908 app/Campaigns/[id]/page.scss 1:9  root stylesheet
+18:09:38.908 
+18:09:38.908 
+18:09:38.908 
+18:09:38.908 ./app/Campaigns/page.scss
+18:09:38.908 Issue while running loader
+18:09:38.908 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Campaigns/page.scss:0:8:
+18:09:38.908 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.909 
+18:09:38.909 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.909 
+18:09:38.909 0 | @import '../globals.scss';
+18:09:38.909 
+18:09:38.909 
+18:09:38.909 app/Campaigns/page.scss 1:9  root stylesheet
+18:09:38.909 
+18:09:38.909 
+18:09:38.909 
+18:09:38.909 ./app/Components/Navbar/Navbar.scss
+18:09:38.909 Issue while running loader
+18:09:38.910 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Components/Navbar/Navbar.scss:0:8:
+18:09:38.910 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.910 
+18:09:38.910 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.910 
+18:09:38.910 0 | @import '../../globals.scss';
+18:09:38.910 
+18:09:38.910 
+18:09:38.910 app/Components/Navbar/Navbar.scss 1:9  root stylesheet
+18:09:38.910 
+18:09:38.911 
+18:09:38.911 
+18:09:38.911 ./app/Dashboard/MyCampaigns/page.scss
+18:09:38.911 Issue while running loader
+18:09:38.911 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Dashboard/MyCampaigns/page.scss:0:8:
+18:09:38.911 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.911 
+18:09:38.911 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.911 
+18:09:38.912 0 | @import '../../globals.scss';
+18:09:38.912 
+18:09:38.912 
+18:09:38.912 app/Dashboard/MyCampaigns/page.scss 1:9  root stylesheet
+18:09:38.912 
+18:09:38.912 
+18:09:38.912 
+18:09:38.912 ./app/Dashboard/MyNfts/[id]/page.scss
+18:09:38.912 Issue while running loader
+18:09:38.913 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Dashboard/MyNfts/%5Bid%5D/page.scss:0:8:
+18:09:38.913 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.913 
+18:09:38.913 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.913 
+18:09:38.913 0 | @import '../../../globals.scss';
+18:09:38.913 
+18:09:38.913 
+18:09:38.913 app/Dashboard/MyNfts/[id]/page.scss 1:9  root stylesheet
+18:09:38.914 
+18:09:38.915 
+18:09:38.915 
+18:09:38.915 ./app/Dashboard/MyNfts/page.scss
+18:09:38.916 Issue while running loader
+18:09:38.916 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Dashboard/MyNfts/page.scss:0:8:
+18:09:38.916 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.916 
+18:09:38.916 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.916 
+18:09:38.916 0 | @import '../../globals.scss';
+18:09:38.916 
+18:09:38.917 
+18:09:38.917 app/Dashboard/MyNfts/page.scss 1:9  root stylesheet
+18:09:38.919 
+18:09:38.919 
+18:09:38.919 
+18:09:38.919 ./app/Dashboard/page.scss
+18:09:38.919 Issue while running loader
+18:09:38.919 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/Dashboard/page.scss:0:8:
+18:09:38.919 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.919 
+18:09:38.919 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.919 
+18:09:38.919 0 | @import '../globals.scss';
+18:09:38.920 
+18:09:38.920 
+18:09:38.920 app/Dashboard/page.scss 1:9  root stylesheet
+18:09:38.920 
+18:09:38.920 
+18:09:38.920 
+18:09:38.920 ./app/page.scss
+18:09:38.920 Issue while running loader
+18:09:38.920 SassWarning: Deprecation Warning on line 0, column 8 of file:///vercel/path0/app/page.scss:0:8:
+18:09:38.921 Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+18:09:38.921 
+18:09:38.921 More info and automated migrator: https://sass-lang.com/d/import
+18:09:38.921 
+18:09:38.922 0 | @import './globals.scss';
+18:09:38.922 
+18:09:38.922 
+18:09:38.922 app/page.scss 1:9  root stylesheet
+18:09:38.922 
+18:09:38.923 
+18:09:38.923 
+18:09:38.953  ✓ Compiled successfully in 37.8s
+18:09:38.962    Skipping linting
+18:09:38.962    Checking validity of types ...
+18:09:40.934    Collecting page data ...
+18:09:41.332 === ENV DEBUG ===
+18:09:41.333 PINATA_JWT exists: false
+18:09:41.333 First 20 chars: undefined
+18:09:41.775    Generating static pages (0/11) ...
+18:09:42.473 === ENV DEBUG ===
+18:09:42.473 PINATA_JWT exists: false
+18:09:42.473 First 20 chars: undefined
+18:09:43.108    Generating static pages (2/11) 
+18:09:43.109    Generating static pages (5/11) 
+18:09:43.109    Generating static pages (8/11) 
+18:09:43.124 🔍 FILTERED CAMPAIGNS (after search): []
+18:09:43.204  ✓ Generating static pages (11/11)
+18:09:44.375    Finalizing page optimization ...
+18:09:44.375    Collecting build traces ...
+18:09:48.547 
+18:09:48.550 Route (app)                         Size  First Load JS
+18:09:48.551 ┌ ○ /                            15.2 kB         364 kB
+18:09:48.551 ├ ○ /_not-found                      0 B         311 kB
+18:09:48.551 ├ ƒ /api/upload-to-pinata            0 B            0 B
+18:09:48.552 ├ ○ /Campaigns                   10.5 kB         506 kB
+18:09:48.552 ├ ƒ /Campaigns/[id]              23.7 kB         472 kB
+18:09:48.552 ├ ○ /Campaigns/Create            33.5 kB         382 kB
+18:09:48.552 ├ ○ /Dashboard                   19.6 kB         506 kB
+18:09:48.552 ├ ○ /Dashboard/MyCampaigns       10.8 kB         369 kB
+18:09:48.553 ├ ○ /Dashboard/MyNfts            11.7 kB         507 kB
+18:09:48.553 └ ƒ /Dashboard/MyNfts/[id]       1.06 kB         322 kB
+18:09:48.553 + First Load JS shared by all     313 kB
+18:09:48.553   ├ chunks/1e5b39bd6a141eb8.js   12.3 kB
+18:09:48.553   ├ chunks/3ac764b0aa4e3ab3.js   10.7 kB
+18:09:48.553   ├ chunks/4a4632542e22e6c9.js   26.5 kB
+18:09:48.553   ├ chunks/4b2a38a1cebc2bb2.js   12.2 kB
+18:09:48.554   ├ chunks/6a4e902b7c07e0fc.js   59.6 kB
+18:09:48.554   ├ chunks/a32571fb90c178fa.js   20.9 kB
+18:09:48.554   ├ chunks/a597dd33c5dbb87e.js   27.4 kB
+18:09:48.554   ├ chunks/ab514789b1da907d.js   59.2 kB
+18:09:48.554   └ chunks/bbf89c5280eb1f0c.js   17.3 kB
+18:09:48.554   ├ chunks/cf9c5683d9b810e9.js   29.6 kB
+18:09:48.555   └ other shared chunks (total)  37.1 kB
+18:09:48.555 
+18:09:48.555 
+18:09:48.555 ○  (Static)   prerendered as static content
+18:09:48.556 ƒ  (Dynamic)  server-rendered on demand
+18:09:48.556 
+18:09:48.704 Traced Next.js server files in: 52.408ms
+18:09:49.125 Created all serverless functions in: 420.305ms
+18:09:49.148 Collected static files (public/, static/, .next/static): 14.861ms
+18:09:49.378 Build Completed in /vercel/output [1m]
+18:09:49.563 Deploying outputs...
+18:09:56.032 Deployment completed
+18:09:56.144 Creating build cache...
+18:10:25.896 Created build cache: 30s
+18:10:25.896 Uploading build cache [213.26 MB]
+18:10:29.735 Build cache uploaded: 3.845s

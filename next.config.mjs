@@ -14,7 +14,6 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
-      // Pinata IPFS gateways
       {
         protocol: 'https',
         hostname: 'gateway.pinata.cloud',
@@ -33,9 +32,13 @@ const nextConfig = {
     ],
   },
 
-  // ← This was in the wrong place before
   eslint: {
     ignoreDuringBuilds: true,
+  },
+
+  // ← Add this block
+  sassOptions: {
+    silenceDeprecations: ['import'],
   },
 };
 
