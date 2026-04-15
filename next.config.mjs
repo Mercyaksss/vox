@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      // ← Your existing ones (kept exactly as you had them)
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
@@ -15,8 +14,7 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
-
-      // ← NEW ONES – these fix the Pinata error
+      // Pinata IPFS gateways
       {
         protocol: 'https',
         hostname: 'gateway.pinata.cloud',
@@ -27,16 +25,18 @@ const nextConfig = {
         hostname: 'ipfs.io',
         pathname: '/ipfs/**',
       },
-      // Optional but recommended – many projects use these gateways too
       {
         protocol: 'https',
-        hostname: '*.pinata.cloud', // covers cloudflare-ipfs.com, etc.
+        hostname: '*.pinata.cloud',
         pathname: '/ipfs/**',
       },
     ],
   },
+
+  // ← This was in the wrong place before
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
-export default nextConfig;eslint: { 
-  ignoreDuringBuilds: true, 
-}, 
+export default nextConfig;
