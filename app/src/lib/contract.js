@@ -1,4 +1,3 @@
-// src/lib/contract.js
 export const CONTRACT_ADDRESS = "0xF13E618984BF79b7ADf10F883418c0e69DD4Aba5";
 
 export const CONTRACT_ABI = [

@@ -1,7 +1,6 @@
-// app/Dashboard/page.js
 'use client'
 import React, { useState, useEffect, useMemo } from 'react';
-import Image from 'next/image'; // ← Added
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Users, Wallet, Award, Zap, Trophy, Rocket } from 'lucide-react';

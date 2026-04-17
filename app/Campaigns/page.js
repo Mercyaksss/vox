@@ -1,4 +1,3 @@
-// app/Campaigns/page.js
 'use client'
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
@@ -95,7 +94,7 @@ export default function CampaignsPage() {
           raised: `${parseFloat(raisedAmount).toFixed(3)} ETH`,
           goal: `${parseFloat(targetAmount).toFixed(2)} ETH`,
           progress,
-          backers: 0, // Add getPublicDonors count if needed
+          backers: 0, 
           daysLeft,
           category: 'Web3',
         };

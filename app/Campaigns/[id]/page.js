@@ -82,7 +82,7 @@ export default function CampaignDetailsPage() {
         });
 
         const formatted = logs
-          .filter(log => !log.args.privateDonation) // Only public donations
+          .filter(log => !log.args.privateDonation) 
           .map(log => ({
             donor: log.args.donor,
             amount: ethers.formatEther(log.args.amount),
@@ -123,7 +123,7 @@ export default function CampaignDetailsPage() {
   const { writeContract, data: hash, isPending } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
-  // Start fake privacy overlay only AFTER tx confirmed
+  
   useEffect(() => {
     if (isPrivateDonation && isConfirmed && hash) {
       setIsProcessingPrivate(true);

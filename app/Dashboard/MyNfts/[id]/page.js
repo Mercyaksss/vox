@@ -1,4 +1,3 @@
-// app/Dashboard/MyNfts/[id]/page.js
 'use client'
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -47,11 +46,11 @@ export default function NFTDetailsPage() {
                 height={600}
                 style={{ 
                   width: '100%',
-                  height: '100%',           // ← forces full height
+                  height: '100%',          
                   objectFit: 'cover',
                   borderRadius: '16px'
                 }}
-                className="nft-detail-image"  // ← new class for extra control
+                className="nft-detail-image"  
               />
             </div>
             <div className="nft-info">
